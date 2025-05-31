@@ -16,4 +16,4 @@ app.use("/api/category", CategotyRoute);
 
 
 
-app.listen(process.env.PORT || 6013, () => console.log(`Foodly Backend is running on ${process.env.PORT}!`))
+app.listen(process.env.PORT || 6013, () => console.log(`Foodchi Backend is running on ${process.env.PORT}!`))
