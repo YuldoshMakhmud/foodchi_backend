@@ -2,7 +2,8 @@ const express = require('express')
 const app = express()
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-const CategotyRoute = require("./routes/category")
+const CategotyRoute = require("./routes/category");
+const RestaurantRoute = require("./routes/restaurant")
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ mongoose.connect(process.env.MONGOURL)
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use("/api/category", CategotyRoute);
+app.use("/api/restaurants", RestaurantRoute);
 
 
 
