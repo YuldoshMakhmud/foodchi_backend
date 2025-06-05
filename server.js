@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGOURL)
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use("/api/category", CategotyRoute);
-app.use("/api/restaurants", RestaurantRoute);
+app.use("/api/restaurant", RestaurantRoute);
 
 
 
