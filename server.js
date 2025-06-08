@@ -6,8 +6,11 @@ const CategotyRoute = require("./routes/category");
 const RestaurantRoute = require("./routes/restaurant");
 const FoodRoute = require("./routes/food");
 const RatingRoute = require("./routes/rating");
+// const generateOtp = require ('./utils/otp_generator');
 
 dotenv.config();
+
+// console.log(generateOtp());
 
 mongoose.connect(process.env.MONGOURL)
 .then(() => console.log("Foodly Database Connected"))
