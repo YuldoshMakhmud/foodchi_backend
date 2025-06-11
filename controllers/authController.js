@@ -2,9 +2,10 @@ const User = require("../models/User");
 const CryptoJS = require('crypto-js');
 const jwt = require('jsonwebtoken');
 const generateOtp = require('../utils/otp_generator');
+const sendEmail = require("../utils/smtp_function");
 
 
-module.export = {
+module.exports = {
     createUser : async(req, res) => {
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
@@ -32,7 +33,7 @@ module.export = {
                 username: req.body.username,
                 email: req.body.email,
                 userType: "Client",
-                password: CryptoJS.AES.encrypt(req.body.password, process,env.SECRET).toString(),
+                password: CryptoJS.AES.encrypt(req.body.password, process.env.SECRET).toString(),
                 otp: otp
             })
 
@@ -40,6 +41,7 @@ module.export = {
            await newUser.save(); 
             
            // SEND OTP TO EMAIL
+           sendEmail(newUser.email, otp);
 
            res.status(201).json({status: true, message: "User successfully created."}); 
         } catch (error) {
