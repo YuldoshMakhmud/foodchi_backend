@@ -10,6 +10,9 @@ const sendEmail = require ('./utils/smtp_function');
 const generateOtp = require ('./utils/otp_generator');
 const AuthRoute = require("./routes/auth");
 const UserRoute = require("./routes/user");
+const AddressRoute = require("./routes/address");
+const CartRoute = require("./routes/cart");
+const OrderRoute = require("./routes/order");
 
 dotenv.config();
 
@@ -31,6 +34,9 @@ app.use("/api/category", CategotyRoute);
 app.use("/api/restaurant", RestaurantRoute);
 app.use("/api/foods", FoodRoute);
 app.use("/api/rating", RatingRoute);
+app.use("/api/address", AddressRoute);
+app.use("/api/cart", CartRoute);
+app.use("/api/orders", OrderRoute);
 
 
 
