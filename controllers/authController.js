@@ -69,7 +69,7 @@ module.exports = {
                 return res.status(400).json({status: false, message: "User not found"});
             }
 
-            const decryptedPassword = CryptoJS.decrypt(user.password, process.env.SECRET);
+            const decryptedPassword = CryptoJS.AES.decrypt(user.password, process.env.SECRET);
             const depassword = decryptedPassword.toString(CryptoJS.enc.Utf8);
 
             if(depassword !== req.body.password){
@@ -77,12 +77,12 @@ module.exports = {
             }
 
             const userToken = jwt.sign({
-                id: user._id,
+                id: user.id,
                 userType: user.userType,
                 email:  user.email,
             }, process.env.JWT_SECRET, {expiresIn: "21d"});
 
-            const {password, otp, ...others} = user.doc;
+            const {password,createdAt,updatedAt,__v, otp, ...others} = user._doc;
 
             res.status(200).json({...others, userToken});
       
