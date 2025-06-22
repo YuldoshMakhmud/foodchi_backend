@@ -21,8 +21,8 @@ dotenv.config();
 mongoose.connect(process.env.MONGOURL)
 .then(() => console.log("Foodly Database Connected"))
 .catch((err) => console.log(err));
-const otp = generateOtp();
-console.log(otp)
+// const otp = generateOtp();
+// console.log(otp)
 
 //sendEmail('yuldoshmakhmud@gmail.com',otp)
 
