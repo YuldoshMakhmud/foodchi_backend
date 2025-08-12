@@ -20,15 +20,15 @@ app.use(cors())
 
 dotenv.config();
 
-console.log(generateOtp());
+// console.log(generateOtp());
 
 mongoose.connect(process.env.MONGOURL)
 .then(() => console.log("Foodly Database Connected"))
 .catch((err) => console.log(err));
-const otp = generateOtp();
-console.log(otp)
+// const otp = generateOtp();
+// console.log(otp)
 
-sendEmail('yuldoshmakhmud@gmail.com',otp)
+// sendEmail('yuldoshmakhmud@gmail.com',otp)
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
